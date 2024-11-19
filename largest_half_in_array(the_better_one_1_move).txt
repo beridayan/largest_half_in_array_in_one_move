@@ -1,0 +1,38 @@
+namespace largest_half_in_array_the_better_one_1_move_
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] n = { 100, 200, -20,21 };
+            Console.WriteLine(largone(n));
+        }
+
+        static int largone(int[] arr)
+        {
+            int current_max = arr[0];
+            int save = arr[0];
+
+            for (int i = 1; i < arr.Length; i++)
+            {
+
+                if (arr[i] > (current_max + arr[i]))  // רק כאשר כל המערך שלילי, הוא מוצא את המקס הכי גדול מהשליליים 
+                {
+                    current_max = arr[i];
+                }
+                else// רוב הפעמים נכנס . 
+                {
+                    current_max += arr[i];
+                }
+
+                if (current_max > save) //  מגדילה רק אם המספר הנוכחי גדול ממספר הכללי , זה חשוב בגלל שיש מקרים בהם המספר החדש הוא שלילי ולכן הוא לא יכנס ל מקס הכללי אבל הוא כן ישמר למקס הנוכחי מכיוון שיש סיכוי שהמספר אחרי המספר השלילי מגדיל יותר ממה שהמספר השלילי הוריד ובכך מגדילים את המקס הכללי
+                {
+                    save = current_max;
+                }
+
+            }
+
+            return save;
+        }
+    }
+}
